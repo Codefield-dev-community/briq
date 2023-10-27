@@ -1,0 +1,16 @@
+@import 'vars';
+
+.error {
+  border: 1px solid $color-error;
+  background-color: white;
+  color: $color-error;
+  display: flex;
+  align-items: center;
+  height: $height-medium;
+  padding: 0 $spacing-12;
+  border-radius: $border-radius;
+
+  .icon {
+    margin-right: $spacing-12;
+  }
+}

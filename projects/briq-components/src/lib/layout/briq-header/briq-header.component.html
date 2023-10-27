@@ -1,0 +1,26 @@
+<header>
+  <div class="user-info" *ngIf="info">
+    <div class="user">
+      <div class="circle">
+        <img
+          *ngIf="info?.user?.avatar; else defaultAvatar"
+          [src]="info?.user?.avatar"
+          [alt]="info?.user?.name" />
+          
+        <ng-template #defaultAvatar
+          ><briq-icon icon="person_male" class="icon"> </briq-icon
+        ></ng-template>
+      </div>
+
+      <div class="name">
+        {{ info?.user?.name }}
+      </div>
+    </div>
+
+    <briq-dropdown-menu
+      [options]="info.menuOptions"
+      [iconOptions]="info.iconOptions"
+      (select)="triggerAction($event)">
+    </briq-dropdown-menu>
+  </div>
+</header>

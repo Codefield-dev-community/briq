@@ -1,0 +1,37 @@
+<briq-dialog [title]="title" [size]="sizeOptions.SMALL">
+  <div class="dialog-content">
+    <p>{{ message }}</p>
+  </div>
+
+  <div class="buttons">
+    <briq-button
+      *ngIf="type != 'delete'"
+      (click)="close()"
+      width="fullwidth"
+      type="cancel">
+      Annuleer
+    </briq-button>
+
+    <briq-button
+      *ngIf="type === 'delete'"
+      (click)="close()"
+      width="fullwidth"
+      type="cancel">
+      Behouden
+    </briq-button>
+
+    <briq-button
+      *ngIf="type === 'delete'"
+      (click)="confirm(true)"
+      width="fullwidth">
+      Verwijderen
+    </briq-button>
+
+    <briq-button
+      *ngIf="type === 'confirm'"
+      (click)="confirm(true)"
+      width="fullwidth">
+      Bevestig
+    </briq-button>
+  </div>
+</briq-dialog>

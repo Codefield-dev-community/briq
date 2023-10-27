@@ -1,0 +1,33 @@
+<div *ngFor='let item of formElement.items; let i = index'
+     class='repeater'>
+  <input [attr.data-cy]='formElement.id + "-" + i'
+         [formControl]='item'
+         [ngClass]='{
+            valid: item.valid && item.value.length,
+            error: item.invalid && item.touched
+         }'
+         [placeholder]="formElement.placeholder || ''"
+         [type]='formElement.inputType'
+         class='input'>
+
+  <briq-icon (click)='formElement.removeControl(i)'
+             class='remove'
+             icon='close_circle'>
+  </briq-icon>
+</div>
+
+<span *ngIf='!formElement.label && formElement.required'
+      class='asterisk'>
+  *
+</span>
+
+<div (click)='formElement.addControl()'
+     [attr.data-cy]='formElement.id + "-add-button"'
+     class='add-button'>
+  <briq-icon [size]='size'
+             class='icon'
+             icon='close'>
+  </briq-icon>
+
+  <span class='text'>Voeg een antwoord toe</span>
+</div>

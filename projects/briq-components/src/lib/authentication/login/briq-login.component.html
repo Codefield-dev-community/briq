@@ -1,0 +1,37 @@
+<div class='login-page'>
+  <div class='login-box'>
+    <img *ngIf='logo'
+         [src]='logo'
+         class='logo'
+         alt='logo'>
+
+    <briq-dynamic-form #form
+                       (submit)='login($event)'
+                       (keyup.enter)='form.triggerSubmit()'
+                       [elements]='loginForm'
+                       class='login-form'>
+    </briq-dynamic-form>
+
+    <briq-error *ngIf='showError'
+                class='error'>
+      Login failed
+    </briq-error>
+
+    <briq-button [identifier]="'submit'"
+                 (click)='form.triggerSubmit()'
+                 class='button'
+                 type='submit'
+                 width='fullwidth'>
+      Inloggen
+    </briq-button>
+
+    <!--        <a [routerLink]="['/login/forgot-password']" todo: activate when forgot-password is added to the be-->
+    <!--           class='forgot-password-link'>-->
+    <!--            <p>-->
+    <!--                <strong>-->
+    <!--                    Wachtwoord vergeten?-->
+    <!--                </strong>-->
+    <!--            </p>-->
+    <!--        </a>-->
+  </div>
+</div>

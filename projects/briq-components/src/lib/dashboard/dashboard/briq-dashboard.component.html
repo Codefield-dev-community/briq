@@ -1,0 +1,56 @@
+<div class='dashboard-container'>
+  <ng-container *ngIf='layout && tiles'>
+    <briq-tile *ngFor='let tile of tiles'
+               [tile]='tile'
+               class='tile'>
+    </briq-tile>
+
+    <briq-load-indicator *ngIf='!tiles'></briq-load-indicator>
+  </ng-container>
+
+  <ng-container *ngIf='layout && jobTiles'>
+    <briq-job-tile *ngFor='let jobTile of jobTiles'
+                   [jobTile]='jobTile'
+                   [jobTileForm]='jobTilesForm'
+                   [editMode]='editMode'
+                   class='job-tile'>
+    </briq-job-tile>
+
+    <briq-load-indicator *ngIf='!jobTiles'></briq-load-indicator>
+  </ng-container>
+
+  <ng-container *ngIf='layout && atsTiles'>
+    <div *ngFor='let atsTile of atsTiles'
+         [style.background-color]='atsTile.backgroundColor'
+         [ngStyle]='{
+            "background-color": atsTile.switchIcon ? null : atsTile.backgroundColor
+         }'
+         (mouseenter)='atsTile.switchIcon = true'
+         (mouseleave)='atsTile.switchIcon = false'
+         (click)='triggerAction({
+            action: "selectAts",
+            data: atsTile
+         })'
+         class='ats-tile'>
+        <img [ngClass]='atsTile.name | lowercase'
+             [hidden]='atsTile.switchIcon'
+             src='{{atsTile.logo}}'
+             alt='ats-logo'>
+
+        <img [ngClass]='atsTile.name | lowercase'
+             [hidden]='!atsTile.switchIcon'
+             src='{{atsTile.logoWhite}}'
+             alt='ats-logo'>
+    </div>
+
+    <briq-load-indicator *ngIf='!atsTiles'></briq-load-indicator>
+  </ng-container>
+
+  <ng-container *ngIf='!layout && tableData'>
+    <briq-table [tableColumns]='tableColumns'
+                [tableData]='tableData'>
+    </briq-table>
+
+    <briq-load-indicator *ngIf='!layout && !tableData'></briq-load-indicator>
+  </ng-container>
+</div>

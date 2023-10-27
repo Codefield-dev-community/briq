@@ -1,0 +1,27 @@
+<div class="page">
+  <briq-icon icon="add" (click)="add = true"></briq-icon>
+  <div class="form box">
+    <h2>Generated form</h2>
+    <div class="form-element-row" *ngFor="let element of formElements">
+      <div class="form-element">
+        <label class="label">{{ element.label }} </label>
+        <briq-dynamic-form-element
+          [formElement]="element"></briq-dynamic-form-element>
+      </div>
+      <briq-icon
+        class="icon"
+        icon="edit"
+        (click)="editElement(element)"></briq-icon>
+      <briq-icon
+        class="icon"
+        icon="close"
+        (click)="removeElement(element)"></briq-icon>
+    </div>
+  </div>
+</div>
+
+<briq-dialog class="create-element" *ngIf="add">
+  <briq-form-element-manager
+    [edit]="edit"
+    (create)="addEditElement($event)"></briq-form-element-manager>
+</briq-dialog>

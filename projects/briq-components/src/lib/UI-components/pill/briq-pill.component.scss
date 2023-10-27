@@ -1,0 +1,11 @@
+@import 'briq';
+
+.pill {
+  padding: $spacing-12 $spacing-24;
+  background: $color-tertiary;
+  border-radius: $border-radius-big;
+
+  span {
+    color: white;
+  }
+}

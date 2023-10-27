@@ -1,0 +1,14 @@
+<input [attr.data-cy]='formElement.id'
+       [attr.disabled]='formElement.disabled ? true : undefined'
+       [formControl]='formElement.formControl'
+       [ngClass]='{
+          disabled: formElement.disabled,
+          error: formElement.isInvalid(),
+          valid: !formElement.isInvalid() && formElement.formControl.value
+        }'
+       [options]='formElement.options'
+       [placeholder]="formElement.placeholder || ''"
+       [value]='formElement.value'
+       class='input'
+       currencyMask/>
+<span *ngIf='!formElement.label && formElement.required' class='asterisk'>*</span>

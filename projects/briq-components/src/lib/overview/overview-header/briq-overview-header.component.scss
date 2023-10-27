@@ -1,0 +1,96 @@
+@import 'briq';
+
+:host {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: $spacing-24;
+}
+
+.title {
+  width: 100%;
+}
+
+.ats-button {
+  .ats-system {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0 1.5em;
+
+    .ats-logo {
+      height: 1em;
+      margin-left: -1.5em;
+      margin-right: .5em;
+    }
+  }
+}
+
+.ats-update {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: $spacing-24;
+
+  .last-sync {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.close-wrapper {
+  display: flex;
+  margin-bottom: $spacing-38;
+  margin-left: auto;
+  background-color: $color-neutral;
+}
+
+.header-button {
+  display: flex;
+  margin-bottom: $spacing-24;
+  margin-left: auto;
+
+  .material-icons {
+    margin-right: $spacing-12;
+  }
+}
+
+.header {
+  background: $color-neutral;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  padding: $spacing-16 $spacing-24;
+
+  .searchbar {
+    flex-grow: 1;
+  }
+
+  .dropdown,
+  .header-inline-button,
+  .header-inline-form {
+    margin-left: $spacing-24;
+  }
+
+  .view-layout {
+    display: flex;
+    background: $color-neutral-400;
+    margin-left: $spacing-24;
+    padding: $spacing-6 $spacing-8;
+    width: auto;
+    height: 48px;
+
+    [class*='layout'] {
+      padding: $spacing-6;
+      cursor: pointer;
+
+      &:hover,
+      &.active:hover {
+        background-color: $color-secondary-600;
+      }
+
+      &.active {
+        background-color: $color-secondary-200;
+      }
+    }
+  }
+}

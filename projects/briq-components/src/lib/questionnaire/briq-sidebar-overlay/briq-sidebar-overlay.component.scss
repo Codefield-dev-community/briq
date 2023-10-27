@@ -1,0 +1,72 @@
+@import 'briq';
+
+.sidebar-overlay-wrapper {
+  position: fixed;
+  top: 0;
+  transition: all ease-in-out .3s;
+  width: 500px;
+  height: 100%;
+  background: $color-white;
+  padding: $spacing-36;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 12px 0 rgb(0 0 0 / 7%), 0 2px 4px rgb(0 0 0 / 5%);
+
+  &.collapsed {
+    left: -500px;
+  }
+
+  &.right {
+    right: 0;
+    left: unset;
+    animation: collapseRight .3s;
+
+    &.collapsed {
+      right: -500px;
+    }
+  }
+
+  &.left {
+    left: 0;
+
+    &.collapsed {
+      left: -500px;
+    }
+  }
+
+  .close {
+    margin: 0 0 $spacing-36 auto;
+  }
+
+  .title {
+    @include font($font-size-24, $font-weight-bold, 1em);
+    margin-bottom: $spacing-16;
+  }
+}
+
+.clickthrough {
+  position: absolute;
+  top: 0;
+  height: 100vh;
+  width: calc(100vw - 500px);
+  z-index: 1;
+
+  &.right {
+    left: 0;
+  }
+
+  &.left {
+    right: 0;
+  }
+
+  &.collapsed {
+    display: none;
+  }
+}
+
+@keyframes collapseRight
+{
+  0% {right: -500px;}
+  100% {right: 0;}
+}

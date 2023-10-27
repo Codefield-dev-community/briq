@@ -1,0 +1,18 @@
+<button [attr.data-cy]="identifier"
+        [attr.disabled]="disabled ? 'disabled' : null"
+        [attr.type]="type"
+        [ngClass]="{
+          disabled: disabled,
+          secondary: type === 'secondary',
+          quaternary: type === 'quaternary',
+          warning: type === 'warning',
+          grey: type === 'grey',
+          white: type === 'white',
+          hidden: type === 'hidden',
+          cancel: type === 'cancel',
+          outline: type === 'outline',
+          fullwidth: width === 'fullwidth'
+        }"
+        class="button">
+    <ng-content></ng-content>
+</button>

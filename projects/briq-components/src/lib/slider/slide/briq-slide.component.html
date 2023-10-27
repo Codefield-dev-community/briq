@@ -1,0 +1,20 @@
+<h2 class='title'>
+  {{ slide.title }}
+</h2>
+
+<p *ngIf='slide.text'
+   [innerHTML]='slide.text'>
+</p>
+
+<ng-container *ngIf='slide.listItems'>
+  <ng-container *ngFor='let item of slide.listItems'>
+    <briq-list-item [item]='item'></briq-list-item>
+  </ng-container>
+</ng-container>
+
+<ng-container *ngIf='slide.formElements'>
+  <briq-dynamic-form #form
+                     (submit)="triggerAction($event)"
+                     [elements]='slide.formElements'>
+  </briq-dynamic-form>
+</ng-container>

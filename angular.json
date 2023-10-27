@@ -99,6 +99,39 @@
           }
         }
       }
+    },
+    "briq-components": {
+      "projectType": "library",
+      "root": "projects/briq-components",
+      "sourceRoot": "projects/briq-components/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/briq-components/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/briq-components/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/briq-components/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/briq-components/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
     }
   }
 }

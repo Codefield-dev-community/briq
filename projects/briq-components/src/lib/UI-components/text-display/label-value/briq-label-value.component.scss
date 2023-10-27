@@ -1,0 +1,17 @@
+@import 'vars';
+
+p {
+  margin: 0;
+  line-height: 150%;
+  font-size: $font-size-small;
+}
+
+.label {
+  font-weight: $font-weight-bold;
+  color: $color-tertiary-600;
+}
+
+.value {
+  font-weight: 600;
+  color: $color-tertiary;
+}

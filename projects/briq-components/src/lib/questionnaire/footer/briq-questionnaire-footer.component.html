@@ -1,0 +1,28 @@
+<footer>
+    <div class='button-row'>
+        <div class='button'>
+            <briq-button *ngIf='previousButton && !previousButton.hidden'
+                         [attr.data-cy]='"previousStep"'
+                         [disabled]='previousButton.disabled'
+                         (click)="buttonClick('previous')"
+                         type='cancel'>
+                <briq-icon [icon]="'chevron_w'"></briq-icon>
+                {{ previousButton.label }}
+            </briq-button>
+        </div>
+
+        <div *ngIf='stepsRemaining' class='progress-count'>
+            <span class='text'>Nog</span>
+            <span class='text large bold'> {{ stepsRemaining }} </span>
+            <span class='text'>stappen te voltooien.</span>
+        </div>
+
+        <briq-button *ngIf='nextButton && !nextButton.hidden'
+                     [attr.data-cy]='"nextStep"'
+                     (click)="buttonClick('next')">
+            <span>{{ nextButton.label }}</span>
+        </briq-button>
+    </div>
+
+    <progress class='progress-bar' max='100' value='{{ progress }}'></progress>
+</footer>

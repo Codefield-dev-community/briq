@@ -1,0 +1,25 @@
+@import 'vars';
+
+.form-element-row {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  margin-bottom: $spacing-36;
+
+  .form-element {
+    flex-basis: 320px;
+    flex-shrink: 0;
+    flex-grow: 0;
+    margin-right: $spacing-12;
+
+    .label {
+      display: block;
+      margin-bottom: $spacing-8;
+    }
+  }
+
+  .icon {
+    margin: 0 $spacing-8;
+    cursor: pointer;
+  }
+}

@@ -1,0 +1,64 @@
+@import 'vars';
+
+.dashboard-container {
+  display: flex;
+  flex-wrap: wrap;
+  grid-gap: $spacing-24;
+
+  .tile {
+    @include breakpoint(0, 1920px) {
+      width: calc(33.333% - 12px);
+
+      &:nth-child(3n) {
+        width: calc(33.333% - 24px);
+      }
+    }
+
+    @include breakpoint(1920px) {
+      width: calc(25% - 16px);
+
+      &:nth-child(4n) {
+        width: calc(25% - 24px);
+      }
+    }
+  }
+
+  .job-tile {
+    @include breakpoint(0, 1920px) {
+      width: calc(50% - 16px);
+
+      &:nth-child(2n) {
+        width: calc(50% - 8px);
+      }
+    }
+
+    @include breakpoint(1920px) {
+      width: calc(33.333% - 16px);
+    }
+  }
+
+  .ats-tile {
+    padding: $spacing-12;
+    width: calc(20% - 16px);
+    display: flex;
+    justify-content: center;
+    min-height: 135px;
+    cursor: pointer;
+    border-radius: $border-radius-big;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
+
+
+    &:nth-child(5n) {
+      width: calc(20% - 32px);
+    }
+
+    &:hover {
+      background-color: $color-primary-dark;
+    }
+
+    .ats-logo {
+      height: 135px;
+      width: 100%;
+    }
+  }
+}

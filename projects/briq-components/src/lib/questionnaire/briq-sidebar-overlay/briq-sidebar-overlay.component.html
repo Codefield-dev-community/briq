@@ -1,0 +1,20 @@
+<div [class.collapsed]="collapsed"
+     [class.left]="position === 'left'"
+     [class.right]="position === 'right'"
+     class='sidebar-overlay-wrapper'>
+    <briq-icon-button [attr.data-cy]='"close-sidebar-overlay"'
+                      (click)='collapsed = !collapsed'
+                      class='close'
+                      icon='close'>
+    </briq-icon-button>
+
+    <div class='title'>{{ title }}</div>
+    <p>{{ body }}</p>
+</div>
+
+<div [class.collapsed]="collapsed"
+     [class.left]="position === 'left'"
+     [class.right]="position === 'right'"
+     (click)='collapsed = !collapsed'
+     class='clickthrough'>
+</div>

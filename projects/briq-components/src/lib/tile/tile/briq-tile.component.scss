@@ -1,0 +1,54 @@
+@import 'vars';
+
+.tile {
+  background: white;
+  border-radius: $border-radius;
+  padding: $spacing-24;
+  box-shadow: 0px 1px 0px $color-neutral-600;
+  position: relative;
+
+  .options {
+    position: absolute;
+    right: $spacing-24;
+    top: $spacing-24;
+  }
+
+  header {
+    margin-bottom: $spacing-24;
+    display: flex;
+    flex-wrap: wrap;
+
+    h3 {
+      font-weight: $font-weight-bold;
+      color: $color-tertiary;
+      line-height: $spacing-24;
+      margin-bottom: $spacing-8;
+      display: inline-block;
+    }
+
+    .material-icons {
+      margin-left: auto;
+    }
+
+    .subtitle {
+      font-size: $font-size-smaller;
+      display: inline-block;
+      color: $color-tertiary-600;
+      width: 100%;
+    }
+  }
+
+  .info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: $spacing-36;
+
+    .info-item {
+      flex-basis: 50%;
+      flex-grow: 0;
+      flex-shrink: 0;
+      margin-bottom: $spacing-12;
+    }
+  }
+}

@@ -1,0 +1,15 @@
+@import 'vars';
+
+.questionnaire-header {
+  height: 80px;
+  background: $color-white;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 $spacing-72;
+  align-items: center;
+
+  .logo {
+    height: 40px;
+    cursor: pointer;
+  }
+}

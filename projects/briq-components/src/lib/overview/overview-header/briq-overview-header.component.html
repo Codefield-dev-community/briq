@@ -1,0 +1,103 @@
+<ng-container *ngIf='options'>
+  <h1 class='title'>
+    {{ options.title }}
+  </h1>
+
+  <div *ngIf='options.ats?.button?.label'
+       class='ats-update'>
+    <briq-button *ngIf='options.ats.button'
+                 [attr.data-cy]='"change-ats"'
+                 (mouseenter)='switchIcon = true'
+                 (mouseleave)='switchIcon = false'
+                 (click)='triggerAction(options.ats.button)'
+                 class='ats-button'
+                 type='white'>
+      <div *ngIf='options.ats.logo'
+           class='ats-system'>
+        <img [ngClass]='options.ats.button.label | lowercase'
+             [hidden]='switchIcon'
+             src='{{options.ats.logo}}'
+             class='ats-logo'
+             alt='ats-logo'>
+
+        <img [ngClass]='options.ats.button.label | lowercase'
+             [hidden]='!switchIcon'
+             src='{{options.ats.logoWhite}}'
+             class='ats-logo'
+             alt='ats-logo'>
+
+        &nbsp;{{ options.ats.button.label }}
+      </div>
+    </briq-button>
+
+    <span *ngIf='options.ats?.syncTime' class='last-sync'>
+        <briq-icon [size]='options.ats.iconSize' icon='sync'></briq-icon>
+        &nbsp;Laatst geupdate: {{ options.ats.syncTime | date: dateTimeFormat }}
+    </span>
+  </div>
+
+  <span *ngIf='options.ats?.close' class='close-wrapper'>
+      <briq-icon-button (click)='triggerAction(options.ats.close)'
+                        icon='close'>
+      </briq-icon-button>
+  </span>
+
+  <briq-button *ngIf='options?.button'
+               [attr.data-cy]='"add-item"'
+               (click)='triggerAction(options.button)'
+               class='header-button'
+               type='quaternary'>
+    <span class='material-icons'> add </span>
+
+    {{ options.button?.label }}
+  </briq-button>
+
+  <header class='header'>
+    <briq-searchbar *ngIf='options?.showSearchbar'
+                    [attr.data-cy]='"searchbar"'
+                    [placeholder]='options.placeholder'
+                    (search)='triggerAction({action: options.searchAction, data: $event.data})'
+                    class='searchbar'
+                    type='grey'>
+    </briq-searchbar>
+
+    <ng-container *ngFor='let dropdown of options?.dropdowns; let i=index'>
+      <briq-dropdown-menu *ngIf='dropdown.options && dropdown.options.length > 1'
+                          [iconOptions]='dropdown.iconOptions'
+                          [label]='dropdown.label'
+                          [options]='dropdown.options'
+                          (select)="triggerAction({ action: 'select ' + i, data: $event.action })"
+                          class='dropdown'>
+      </briq-dropdown-menu>
+    </ng-container>
+
+    <briq-button *ngIf='options?.inlineButton'
+                 [attr.data-cy]='"add-default"'
+                 (click)='triggerAction(options.inlineButton)'
+                 class='header-inline-button'
+                 type='grey'>
+      {{ options.inlineButton?.label }}
+    </briq-button>
+
+    <briq-dynamic-form-element *ngIf='options?.inlineForm'
+                               [formElement]='options.inlineForm'
+                               (uploadFile)="triggerAction({ action: 'uploadDefaultImage', data: $event.data })"
+                               class='header-inline-form'>
+    </briq-dynamic-form-element>
+
+    <div *ngIf='options?.showLayoutSwitch'
+         class='view-layout'>
+      <briq-icon [class.active]='!layout'
+                 (click)='triggerAction(options.layout)'
+                 class='layout-list'
+                 icon='layout_list'>
+      </briq-icon>
+
+      <briq-icon [class.active]='layout'
+                 (click)='triggerAction(options.layout)'
+                 class='layout-grid'
+                 icon='layout_grid'>
+      </briq-icon>
+    </div>
+  </header>
+</ng-container>

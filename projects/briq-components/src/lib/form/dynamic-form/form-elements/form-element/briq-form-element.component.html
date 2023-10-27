@@ -1,0 +1,33 @@
+<ng-container *ngIf='formElement'>
+  <div *ngIf='formElement.label'
+       [ngClass]='{
+        empty: !formElement.label,
+        invalid: formElement.isInvalid()
+       }'
+       class='label invalid'>
+    &nbsp;
+    <label [class.required]='formElement.required'
+           [innerHtml]='formElement.label + range + rangeLabel'>
+    </label>
+
+    <span *ngIf='formElement.help'
+          [class]="'help-icon'"
+          (click)="triggerAction({action: 'triggerOverlay', data: formElement.help})">
+      !
+    </span>
+  </div>
+
+  <div *ngIf='formElement.description'
+       class='description'>
+    <span class='text large bold'>
+      {{ formElement.description }}
+    </span>
+  </div>
+
+  <div class='form-element'>
+    <briq-dynamic-form-element *ngIf='formElement && formElement.formControl'
+                               [formElement]='formElement'
+                               (updateRange)='addRangeToLabel($event)'>
+    </briq-dynamic-form-element>
+  </div>
+</ng-container>

@@ -1,0 +1,48 @@
+@import 'briq';
+
+header {
+  display: flex;
+  align-items: center;
+  height: 80px;
+  background: white;
+  width: 100%;
+  box-shadow: 0 0 2px $color-neutral-400;
+  justify-content: space-between;
+
+  .user-info {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    margin-right: $spacing-36;
+
+    .user {
+      margin-right: $spacing-12;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+
+      .name {
+        font-size: $font-size-small;
+      }
+    }
+  }
+}
+
+.circle {
+  width: 38px;
+  height: 38px;
+  background: $color-neutral-600;
+  border-radius: 50%;
+  margin-right: $spacing-12;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    border-radius: 50%;
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+  }
+}

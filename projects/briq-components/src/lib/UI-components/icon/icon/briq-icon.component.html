@@ -1,0 +1,12 @@
+<fg-icon [debug]='debug'
+         [icon]='icon'
+         [ngClass]='{
+          debug: debug,
+          xs: size === sizes.XS,
+          medium: size === sizes.MEDIUM,
+          regular: size === sizes.REGULAR,
+          xl: size === sizes.XL,
+          large: size === sizes.LARGE
+        }'
+         class='icon {{ icon }}'>
+</fg-icon>

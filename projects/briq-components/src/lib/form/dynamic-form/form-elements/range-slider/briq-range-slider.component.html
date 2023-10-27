@@ -1,0 +1,11 @@
+<div class='range-slider-wrapper'>
+    <p-slider (onChange)='onUpdateValue()'
+              [(ngModel)]='formElement.value'
+              [attr.data-cy]='formElement.id'
+              [formControl]='formElement.formControl'
+              [step]='formElement.step'
+              [max]='formElement.max'
+              [min]='formElement.min'
+              [range]='true'>
+    </p-slider>
+</div>

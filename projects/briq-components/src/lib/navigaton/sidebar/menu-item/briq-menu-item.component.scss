@@ -1,0 +1,37 @@
+@import 'briq';
+
+$color-menu-item: $color-tertiary-400;
+
+.icon {
+  color: $color-menu-item !important;
+}
+
+.menu-item {
+  @include font($font-size-small, $font-weight-bold, 24px, $color-menu-item);
+  width: 100%;
+  display: flex;
+  padding: $spacing-18 $spacing-36;
+  align-items: center;
+  border-radius: $border-radius;
+  transition: color $speed $cubic-bezir, background-color $speed $cubic-bezir;
+  text-decoration: none;
+
+  & > * {
+    padding-right: $spacing-8;
+  }
+
+  &.active {
+    color: $color-secondary-dark;
+    background-color: $color-secondary-200;
+  }
+
+  &:hover {
+    color: $color-secondary-dark;
+    background-color: $color-secondary-600;
+  }
+
+  &:focus {
+    color: $color-secondary;
+    background-color: $color-tertiary-600;
+  }
+}

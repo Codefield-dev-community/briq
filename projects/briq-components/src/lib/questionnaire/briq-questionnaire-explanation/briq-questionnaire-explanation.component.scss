@@ -1,0 +1,7 @@
+@import 'briq';
+@import 'briq/questionnaire';
+
+.slider {
+  width: var(--questionaire-form-width, 576px);
+  margin: auto;
+}

@@ -1,0 +1,20 @@
+<briq-dialog [title]="title" [size]='size'>
+  <div class="dialog-content">
+    <briq-dynamic-form
+      [elements]="formElements"
+      (submit)="confirm($event)"
+      #form
+      class="form">
+    </briq-dynamic-form>
+  </div>
+
+  <div class="buttons">
+    <briq-button (click)="close()" width="fullwidth" type="cancel">
+      Annuleer
+    </briq-button>
+
+    <briq-button (click)="form.triggerSubmit()" width="fullwidth" type="submit">
+      {{ type != 'edit' ? 'Voeg toe' : 'Wijzig' }}
+    </briq-button>
+  </div>
+</briq-dialog>

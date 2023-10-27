@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="option-form box">
+    <h2>Create form element</h2>
+    <briq-dynamic-form
+      #form
+      [elements]="elementOptions"
+      (submit)="createElement($event)"></briq-dynamic-form>
+    <briq-button (click)="form.triggerSubmit()"
+      >Create form element</briq-button
+    >
+  </div>
+
+  <!--  <div class="generated-output box">-->
+  <!--    <h2>Example</h2>-->
+  <!--    <ng-container *ngIf="exampleElement">-->
+  <!--      <briq-dynamic-form [elements]="[exampleElement]"></briq-dynamic-form>-->
+  <!--      <briq-button>Create component</briq-button>-->
+  <!--    </ng-container>-->
+  <!--  </div>-->
+</div>

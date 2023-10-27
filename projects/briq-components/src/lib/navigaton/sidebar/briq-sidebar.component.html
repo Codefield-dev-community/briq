@@ -1,0 +1,30 @@
+<div [class.collapsed]="collapsed" class="sidebar-wrapper">
+  <!-- header -->
+  <span class="header-menu-toggle"></span>
+
+  <a class="logo-wrapper">
+    <img
+      *ngIf="logo"
+      [src]="logo"
+      [routerLink]="['/personas']"
+      class="header-logo" />
+  </a>
+
+  <!-- menu -->
+  <div class="menu">
+    <div class="company">
+      <div class="circle">
+        <img *ngIf="info?.company?.logo" [src]=info?.company?.logo [alt]=info?.company?.name />
+      </div>
+
+      <div class="company-name">
+        {{ info?.company?.name }}
+      </div>
+    </div>
+
+    <ng-container *ngFor="let item of menuItems">
+      <briq-menu-item *ngIf="allowedForRole(item)" [item]="item">
+      </briq-menu-item>
+    </ng-container>
+  </div>
+</div>

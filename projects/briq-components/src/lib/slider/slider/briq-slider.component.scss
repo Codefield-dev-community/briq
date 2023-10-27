@@ -1,0 +1,28 @@
+@import "briq";
+
+.slider-wrapper {
+  display: flex;
+  flex-direction: column;
+
+  .dots {
+    display: flex;
+    justify-content: center;
+
+    .dot {
+      height: $spacing-8;
+      width: $spacing-8;
+      margin: $spacing-28 $spacing-6 $spacing-42 $spacing-6;
+      border: 1px solid $color-tertiary;
+      border-radius: 50%;
+
+      &.active {
+        background-color: $color-tertiary;
+      }
+    }
+  }
+
+  .button {
+    margin: 0 auto;
+    min-width: unset;
+  }
+}

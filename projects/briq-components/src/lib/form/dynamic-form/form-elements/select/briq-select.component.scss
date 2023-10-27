@@ -1,0 +1,148 @@
+@import 'vars';
+
+$select-padding: $spacing-12;
+
+:host {
+  color: $color-tertiary-dark;
+
+  .select-wrapper {
+    position: relative;
+
+    .select {
+      width: 100%;
+      background-color: $color-white;
+      border-radius: $border-radius;
+      border: 1px solid var(--color-neutral-600, #e6e8ef);
+      @include font('body');
+      display: flex;
+      flex-direction: column;
+      position: relative;
+
+      &.open {
+        .menu {
+          height: auto;
+          max-height: 400px;
+          padding-bottom: 1px;
+        }
+
+        .toggle-icon {
+          transform: rotate(180deg);
+        }
+      }
+
+      .current {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        cursor: pointer;
+        padding: $select-padding;
+        user-select: none;
+
+        &.valid {
+          background-color: $color-secondary-400;
+          border: 1px solid $color-secondary;
+        }
+
+        &.error {
+          border: 1px solid $color-error;
+        }
+
+        * {
+          pointer-events: none;
+        }
+
+        .current-txt {
+          width: 500px;
+          padding-right: $spacing-18;
+          margin: 0;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        .toggle-icon {
+          transition: transform $speed $cubic-bezir;
+        }
+      }
+
+      .menu {
+        position: absolute;
+        top: 60px;
+        left: 0;
+        height: 0;
+        width: 100%;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        background: white;
+        z-index: 1;
+
+        .searchbar {
+          margin: $spacing-12;
+        }
+
+        .options {
+          overflow-x: hidden;
+          overflow-y: auto;
+          box-shadow: 0 1px 0 $color-neutral-600;
+
+          .option-item {
+            display: flex;
+            flex-direction: row;
+            align-content: center;
+            align-items: center;
+            padding: $select-padding;
+            cursor: pointer;
+            border-bottom: 1px solid $color-neutral-200;
+
+            &.disabled {
+              cursor: default;
+              pointer-events: none;
+              opacity: 0.5;
+
+              &.default {
+                display: none;
+              }
+            }
+
+            &.hidden {
+              display: none;
+            }
+
+            &:hover {
+              background: $color-neutral-600;
+            }
+
+            &.active {
+              background: $color-secondary-400;
+            }
+          }
+        }
+
+        &.multiple {
+          .option-item {
+            padding-left: $spacing-72;
+            display: flex;
+            position: relative;
+
+            &.active {
+              background: none;
+            }
+
+            .checkbox {
+              flex: 28px 0 0;
+              margin-right: $spacing-18;
+              top: 14px;
+              left: $spacing-18;
+            }
+          }
+        }
+
+        .no-options-available {
+          padding: $spacing-18;
+          box-shadow: 0 1px 0 $color-neutral-600;
+        }
+      }
+    }
+  }
+}

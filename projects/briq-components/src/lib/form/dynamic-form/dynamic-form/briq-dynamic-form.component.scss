@@ -1,0 +1,6 @@
+$dynamic-form-max-width: 576px;
+:host {
+  width: 100%;
+  max-width: $dynamic-form-max-width;
+  display: block;
+}

@@ -1,0 +1,66 @@
+@import 'vars';
+
+$sidemenu-spacing: $spacing-18;
+$sidemenu-background: var(--color-primary-dark, $color-primary-dark);
+$sidemenu-transition-duration: $speed;
+$sidemenu-transition-ease: ease-out;
+
+:host {
+  display: flex;
+  flex-flow: column;
+  align-self: stretch;
+  position: relative;
+  box-sizing: border-box;
+  width: $sidemenu-width;
+  height: 100%;
+  min-height: 100vh;
+  background: $color-white;
+  margin-right: $spacing-24;
+
+  &:after {
+    content: '';
+    position: absolute;
+    @include shadow('to left');
+    right: 0;
+    top: 0;
+    width: 32px;
+    transform: translateX(100%);
+    height: 100%;
+    pointer-events: none;
+  }
+
+  .sidebar-wrapper {
+    position: sticky;
+
+    .logo-wrapper {
+      padding: $spacing-60 $spacing-72 $spacing-48 $spacing-72;
+      display: block;
+
+      .header-logo {
+        cursor: pointer;
+      }
+    }
+
+    .company {
+      display: flex;
+      align-items: center;
+      padding: $spacing-18 $spacing-36;
+
+      .circle {
+        width: 24px;
+        height: 24px;
+        background: $color-neutral-600;
+        border-radius: 50%;
+        margin-right: $spacing-8;
+        display: flex;
+
+        img {
+          object-fit: cover;
+          width: 100%;
+          height: 100%;
+          border-radius: 50%;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,45 @@
+@import 'vars';
+
+:host {
+  display: flex;
+
+  //@TODO add sizes
+
+  .debug {
+    z-index: 9999;
+    position: fixed;
+    background: white;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    overflow: auto;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .xs {
+    width: 10px;
+    height: 10px;
+  }
+
+  .medium {
+    width: 16px;
+    height: 16px;
+  }
+
+  .regular {
+    width: 20px;
+    height: 20px;
+  }
+
+  .large {
+    width: 42px;
+    height: 42px;
+  }
+
+  .xl {
+    width: 60px;
+    height: 60px;
+  }
+}

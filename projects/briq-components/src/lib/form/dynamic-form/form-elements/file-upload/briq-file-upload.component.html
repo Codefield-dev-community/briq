@@ -1,0 +1,11 @@
+<div class='file-upload-wrapper'>
+  <p-fileUpload [accept]='formElement.accept'
+                [auto]='formElement.autoUpload'
+                [chooseLabel]='formElement.label'
+                [chooseIcon]='formElement.chooseIcon'
+                [maxFileSize]='formElement?.maxFileSize'
+                [mode]='formElement.mode'
+                [url]='formElement.url'
+                (onSelect)='onSelect($event)'>
+  </p-fileUpload>
+</div>

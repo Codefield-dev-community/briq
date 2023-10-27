@@ -1,0 +1,26 @@
+<div
+  [class.active]="toggle"
+  [class.label]="!!label"
+  (clickOutside)="toggle = false"
+  (click)="toggle = !toggle"
+  class="select">
+  <div *ngIf="label" class="label">
+    {{ label }}
+  </div>
+
+  <briq-icon
+    [icon]="icon"
+    [size]="iconSize"
+    [class.rotate]="rotate"
+    class="icon">
+  </briq-icon>
+
+  <div [class.active]="toggle" class="options">
+    <div
+      *ngFor="let option of options"
+      (click)="onClick(option)"
+      class="option text">
+      {{ option.label ? option.label.charAt(0).toUpperCase() + option.label.substr(1) : '' }}
+    </div>
+  </div>
+</div>

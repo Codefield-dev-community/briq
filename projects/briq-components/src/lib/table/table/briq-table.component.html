@@ -1,0 +1,58 @@
+<p-table [value]='tableData'
+         [columns]='tableColumns'>
+  <ng-template pTemplate='header'
+               let-columns>
+    <tr>
+      <th *ngFor='let col of columns'
+          [class]='col'>
+        <ng-container *ngIf='col !== "acties"'>
+          {{ col | titlecase }}
+        </ng-container>
+      </th>
+    </tr>
+  </ng-template>
+
+  <ng-template pTemplate='body'
+               let-rowData
+               let-columns='columns'>
+    <tr>
+      <td *ngFor='let col of columns'
+          [ngSwitch]='true'
+          [class.pointer]='!!rowData[col]?.data'
+          (click)='rowData[col]?.label
+            ? triggerAction({
+                action: rowData[col].action,
+                data: rowData[col].id
+              })
+            : null'>
+        <ng-container *ngSwitchCase="rowData[col]?.action === 'link'">
+          <a [href]="rowData[col]?.label"
+             target='_blank'>
+            {{ rowData[col]?.label }}
+          </a>
+        </ng-container>
+
+        <ng-container *ngSwitchCase="rowData[col]?.action === 'phone'">
+          <a [href]="'tel:' + rowData[col]?.label">
+            {{ rowData[col]?.label }}
+          </a>
+        </ng-container>
+
+        <ng-container *ngSwitchDefault>
+          {{ rowData[col]?.label ? rowData[col].label : rowData[col] }}
+
+          <span *ngIf='rowData[col]?.id && rowData[col]?.data' class='subtitle'>
+            Gemaakt op {{ rowData[col].data | date: dateFormat }}
+          </span>
+        </ng-container>
+
+        <briq-dropdown-menu *ngIf='col === "acties"'
+                            [iconOptions]='rowData.iconOptions'
+                            [options]='rowData.options'
+                            (select)='triggerAction($event)'
+                            class='options'>
+        </briq-dropdown-menu>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>

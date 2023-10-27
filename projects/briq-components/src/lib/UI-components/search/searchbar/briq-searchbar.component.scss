@@ -1,0 +1,35 @@
+@import 'vars';
+
+.searchbar {
+  width: 100%;
+  background: $color-neutral-400;
+  display: flex;
+  align-items: center;
+  height: 48px;
+  border-radius: $border-radius-big;
+
+  .icon {
+    flex: 0 0 18px;
+    margin: 0 $spacing-12;
+    color: $color-tertiary-600;
+  }
+
+  .search-field {
+    border: none;
+    background: inherit;
+    height: 32px;
+    margin-right: $spacing-36;
+    font-size: $font-size-regular;
+    flex: 1 0 80px;
+    outline: 0 !important;
+
+    &::placeholder {
+      color: $color-tertiary-600;
+    }
+  }
+
+  &.white {
+    background: $color-white;
+    border: 1px solid $color-neutral-400;
+  }
+}

@@ -1,0 +1,9 @@
+<a [attr.data-cy]="'list_item_' + item.id.toString()"
+   [id]="'list_item_' + item.id.toString()"
+   (click)="triggerAction({action: 'triggerOverlay', data: item.overlayInfo})"
+   class='list-item'>
+    <briq-icon *ngIf='item.icon'
+               [icon]='item.icon'>
+    </briq-icon>
+    {{ item.label }}
+</a>

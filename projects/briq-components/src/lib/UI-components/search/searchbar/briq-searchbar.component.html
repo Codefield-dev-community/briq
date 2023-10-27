@@ -1,0 +1,11 @@
+<div [class.white]="type === 'white'"
+     class='searchbar'>
+    <briq-icon class='icon'
+               icon='search'>
+    </briq-icon>
+
+    <input (keyup)='userInput($event)'
+           [(ngModel)]='searchText'
+           [placeholder]='placeholder'
+           class='search-field'/>
+</div>

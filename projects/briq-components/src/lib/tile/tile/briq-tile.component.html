@@ -1,0 +1,33 @@
+<div class='tile'>
+    <header>
+        <h3>{{ tile.title }}</h3>
+
+        <briq-dropdown-menu
+                (select)='triggerAction($event)'
+                *ngIf='tile.options.length'
+                [iconOptions]='tile.iconOptions'
+                [options]='tile.options'
+                class='options'>
+        </briq-dropdown-menu>
+
+        <span *ngIf='tile.subtitle' class='subtitle'>
+          Gemaakt op {{ tile.subtitle | date: dateFormat }}
+        </span>
+    </header>
+
+    <div class='info'>
+        <briq-label-value
+                *ngFor='let info of tile.info'
+                [labelValue]='info'
+                class='info-item'>
+        </briq-label-value>
+    </div>
+
+    <briq-button
+            *ngIf='tile.button'
+            [identifier]='tile.button.id'
+            [routerLink]='tile.button.routerLink'
+            width='fullwidth'>
+        {{ tile.button.label }}
+    </briq-button>
+</div>

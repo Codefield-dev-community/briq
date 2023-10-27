@@ -1,0 +1,54 @@
+@import 'briq';
+
+.dialog-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  background: rgba(#0d2267, 0.15);
+  justify-content: center;
+  z-index: 1;
+
+  .dialog-box {
+    position: relative;
+    margin: auto;
+    border-radius: $border-radius-big;
+    overflow: auto;
+    background: $color-neutral;
+    display: flex;
+    flex-direction: column;
+
+    .close {
+      position: relative;
+      margin: $spacing-28 $spacing-28 $spacing-28 auto;
+      display: flex;
+      justify-content: flex-end;
+      cursor: pointer;
+      width: $spacing-16;
+    }
+
+    .title {
+      padding: 0 $spacing-36;
+      margin-bottom: $spacing-36;
+      text-align: center;
+      color: $color-tertiary;
+      font-size: $font-size-largest;
+      font-weight: $font-weight-boldest;
+      line-height: $font-size-largest;
+    }
+
+    &.large {
+      width: 600px;
+      height: calc(100% - 200px);
+      max-height: 800px;
+    }
+
+    &.small {
+      width: 500px;
+      height: calc(100% - 200px);
+      max-height: 380px;
+    }
+  }
+}

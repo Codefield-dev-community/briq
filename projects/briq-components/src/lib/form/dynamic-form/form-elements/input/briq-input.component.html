@@ -1,0 +1,14 @@
+<input [attr.data-cy]='formElement.id'
+       [attr.disabled]='formElement.disabled ? true : undefined'
+       [formControl]='formElement.formControl'
+       [ngClass]='{
+          disabled: formElement.disabled,
+          error: formElement.isInvalid(),
+          valid: !formElement.isInvalid() && formElement.formControl.value
+        }'
+       [placeholder]="formElement.placeholder || ''"
+       [type]='formElement.inputType'
+       [value]='formElement.value'
+       [maxlength]='formElement.maxLength'
+       class='input'/>
+<span *ngIf='!formElement.label && formElement.required' class='asterisk'>*</span>

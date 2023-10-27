@@ -1,0 +1,11 @@
+@import 'briq/dialog';
+
+.buttons {
+  [width*='fullwidth'] {
+    width: 100%;
+
+    &:not(:first-child) {
+      margin-left: $spacing-24;
+    }
+  }
+}

@@ -1,0 +1,175 @@
+<div class="job-tile">
+  <div *ngIf="!cardFlip" class="front">
+    <div class="image">
+      <img
+        src="{{
+          jobTile.image ? jobTile.image : 'assets/img/image-placeholder.png'
+        }}" />
+
+      <briq-dynamic-form-element
+        *ngIf="uploadForm"
+        [formElement]="uploadForm"
+        (uploadFile)="uploadFile(jobTile.id, $event.data)"
+        class="upload-form">
+      </briq-dynamic-form-element>
+    </div>
+
+    <div class="info">
+      <header>
+        <span *ngIf="jobTile.township" class="subtitle">
+          {{ jobTile.township }}
+        </span>
+
+        <h3>{{ jobTile.position }}</h3>
+      </header>
+
+      <body>
+        <span
+          *ngIf="dropdownOptions[0]?.value === 'salary' && jobTile?.salaryMin"
+          class="label">
+          {{ jobTile.salaryMin | currency: 'EUR':'symbol':'1.0':'nl' }}
+          -
+          {{ jobTile.salaryMax | currency: 'EUR':'symbol':'1.0':'nl' }}
+          /
+          {{ jobTile.salaryPeriod }}
+
+          <i
+            (click)="
+              triggerAction({
+                action: 'selectItem',
+                data: { id: jobTile, value: 'salary' }
+              })
+            "
+            class="fa-solid fa-pen edit">
+          </i>
+
+          <briq-icon-button
+            [isButton]="false"
+            (click)="emptySalary()"
+            icon="close"
+            class="close">
+          </briq-icon-button>
+        </span>
+
+        <span
+          *ngIf="
+            dropdownOptions[0]?.value === 'expirationdate' &&
+            !jobTile?.salaryMin
+          "
+          class="label">
+          {{ dropdownOptions[0].label }}
+
+          <i
+            (click)="
+              triggerAction({
+                action: 'selectItem',
+                data: { id: jobTile, value: 'expirationdate' }
+              })
+            "
+            class="fa-solid fa-pen edit">
+          </i>
+
+          <briq-icon-button
+            [isButton]="false"
+            (click)="emptyExpirationDate()"
+            icon="close"
+            class="close">
+          </briq-icon-button>
+        </span>
+
+        <div *ngIf="dropdownOptions?.length > 2" class="options-count">
+          {{ '+' + (dropdownOptions.length - 1) }}
+        </div>
+
+        <briq-dropdown-menu
+          *ngIf="dropdownOptions.length > 1"
+          [iconOptions]="iconOptions"
+          [options]="dropdownOptions | slice: 1"
+          (select)="
+            triggerAction({
+              action: 'selectItem',
+              data: { id: jobTile, value: $event.action }
+            })
+          "
+          class="options">
+        </briq-dropdown-menu>
+
+        <i (click)="onCardFlip(jobTile)" class="fa-solid fa-plus"></i>
+      </body>
+
+      <footer>
+        <div>
+          <span class="qualified">{{ jobTile.qualifiedAmount }}</span>
+          <span class="declined">{{ jobTile.declinedAmount }}</span>
+          <span class="job-id">#{{ jobTile.jobId }}</span>
+        </div>
+
+        <span
+          [class]="{
+            active: jobTile.isActive,
+            internal: jobTile.status === 'internal'
+          }"
+          class="dot"></span>
+      </footer>
+    </div>
+  </div>
+
+  <div *ngIf="cardFlip" class="back">
+    <div class="heading">
+      <p class="title">{{ editMode ? 'Bewerk item' : 'Nieuw Item' }}</p>
+
+      <briq-icon-button (click)="cardFlip = false" icon="close" class="close">
+      </briq-icon-button>
+    </div>
+
+    <div class="buttons">
+      <ng-container *ngIf="!editMode">
+        <briq-button
+          *ngFor="let button of buttons"
+          [identifier]="button.value"
+          (click)="
+            triggerAction({
+              action: 'selectItem',
+              label: button.label,
+              data: { id: jobTile, value: button.value }
+            })
+          "
+          class="button"
+          type="outline">
+          {{ button.label | titlecase }}
+        </briq-button>
+      </ng-container>
+    </div>
+
+    <p *ngIf="jobTileForm?.title">
+      <strong>{{ jobTileForm.title }}</strong>
+    </p>
+
+    <div *ngIf="jobTileForm" class="form">
+      <briq-dynamic-form
+        #form
+        (submit)="
+          triggerAction({ action: 'submit', data: $event, id: jobTile.id })
+        "
+        (keyup.enter)="form.triggerSubmit()"
+        [elements]="jobTileForm?.formElements"
+        [class]="'jobTileForm'">
+      </briq-dynamic-form>
+
+      <div class="form-buttons">
+        <i (click)="form.triggerSubmit()" class="fa-solid fa-check"></i>
+
+        <i
+          *ngIf="jobTileForm?.deleteButton"
+          (click)="
+            triggerAction({
+              action: 'submit',
+              data: { expireAt: null },
+              id: jobTile.id
+            })
+          "
+          class="fa-solid fa-trash-can"></i>
+      </div>
+    </div>
+  </div>
+</div>

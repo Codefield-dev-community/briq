@@ -1,0 +1,22 @@
+<div class='slider-wrapper'>
+    <briq-slide [slide]='slider.slides[activeSlide]'></briq-slide>
+
+    <div class='dots'>
+        <div *ngFor='let dot of [].constructor(slider.slides.length); let i = index'
+             [attr.data-cy]='"slide" + i'
+             [class.active]='i === activeSlide'
+             (click)="triggerAction({action: 'nextSlide', data: i})"
+             class='dot'>
+        </div>
+    </div>
+
+    <briq-button [identifier]='"next-slide"'
+                 (click)='triggerAction({
+                    action: slider?.slides[activeSlide]?.button?.action,
+                    data: activeSlide+1
+                 })'
+                 class='button'
+                 type='quaternary'>
+        {{ slider?.slides[activeSlide]?.button?.text}}
+    </briq-button>
+</div>

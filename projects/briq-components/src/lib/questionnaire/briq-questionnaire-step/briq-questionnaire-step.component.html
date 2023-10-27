@@ -1,0 +1,24 @@
+<div class="questionnaire">
+    <briq-questionnaire-header
+            (close)="close()"
+            class="header"></briq-questionnaire-header>
+    <div class="questions">
+        <div class="form-container">
+            <h2 class="title">{{ step.title }}</h2>
+            <p *ngIf="step.text">{{ step.text }}</p>
+            <briq-dynamic-form
+                #form
+                (submit)="submitForm($event)"
+                [elements]="step.formElements"></briq-dynamic-form>
+        </div>
+    </div>
+
+    <briq-questionnaire-footer
+            (navigate)="createActionEvent($event, form)"
+            [nextButton]="step.buttons.next"
+            [previousButton]="step.buttons.previous"
+            [progress]="step.progress"
+            [stepsRemaining]="step.stepsRemaining"
+            class="footer">
+    </briq-questionnaire-footer>
+</div>

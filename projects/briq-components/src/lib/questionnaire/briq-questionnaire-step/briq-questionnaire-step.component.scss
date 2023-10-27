@@ -1,0 +1,22 @@
+@import 'briq';
+@import 'briq/questionnaire';
+
+.questionnaire {
+  .questions {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    overflow-y: scroll;
+    width: 100%;
+
+    .form-container {
+      width: var(--questionaire-form-width, 576px);
+      margin: $spacing-72 0;
+
+      .title {
+        margin-bottom: $spacing-36;
+      }
+    }
+  }
+}

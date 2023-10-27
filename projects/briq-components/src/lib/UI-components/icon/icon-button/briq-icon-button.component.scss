@@ -1,0 +1,32 @@
+@import 'vars';
+
+.icon-button {
+  width: 32px;
+  height: 32px;
+  border-radius: $border-radius-big;
+  border: 2px solid $color-border;
+  padding: $spacing-8;
+  transition: border-color $speed $cubic-bezir, background $speed $cubic-bezir, color $speed $cubic-bezir;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .icon {
+    width: 16px;
+  }
+
+  &:hover {
+    border-color: $color-secondary-400;
+    color: $color-secondary-400;
+  }
+}
+
+.icon:first-of-type {
+  cursor: pointer;
+
+  > .icon:first-child {
+    width: 1em;
+    color: $color-disabled;
+  }
+}

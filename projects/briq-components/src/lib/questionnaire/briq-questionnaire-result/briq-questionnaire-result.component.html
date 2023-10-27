@@ -1,0 +1,14 @@
+<div class="questionnaire">
+  <briq-questionnaire-header
+    class="header"
+    (close)="close()"></briq-questionnaire-header>
+  <div class="content">
+    <ng-content></ng-content>
+  </div>
+  <briq-questionnaire-footer
+    [previousButton]="buttons?.previous"
+    [nextButton]="buttons?.next"
+    (navigate)="createActionEvent($event)"
+    class="footer">
+  </briq-questionnaire-footer>
+</div>

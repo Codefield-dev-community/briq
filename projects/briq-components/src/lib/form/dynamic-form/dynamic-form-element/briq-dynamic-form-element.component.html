@@ -1,0 +1,54 @@
+<ng-container [ngSwitch]='formElement.type'>
+  <briq-calendar *ngSwitchCase="'calendar'"
+                 [attr.data-cy]='formElement.id'
+                 [formElement]='formElement'>
+  </briq-calendar>
+
+  <briq-checkbox *ngSwitchCase="'checkbox'"
+                 [attr.data-cy]='formElement.id'
+                 [formElement]='formElement'>
+  </briq-checkbox>
+
+  <briq-currency-input *ngSwitchCase="'currency-input'"
+                       [formElement]='formElement'>
+  </briq-currency-input>
+
+  <briq-file-upload *ngSwitchCase="'file-upload'"
+                    [formElement]='formElement'
+                    (upload)='onUpload($event)'>
+  </briq-file-upload>
+
+  <briq-hidden *ngSwitchCase="'hidden'"
+               [formElement]='formElement'>
+  </briq-hidden>
+
+  <briq-input *ngSwitchCase="'input'"
+              [formElement]='formElement'>
+  </briq-input>
+
+  <briq-range-slider *ngSwitchCase="'range-slider'"
+                     [formElement]='formElement'
+                     (updateValue)='onUpdateRange($event)'>
+  </briq-range-slider>
+
+  <briq-repeater *ngSwitchCase="'repeater'"
+                 [formElement]='formElement'>
+  </briq-repeater>
+
+  <briq-select *ngSwitchCase="'select'"
+               [formElement]='formElement'>
+  </briq-select>
+
+  <briq-textarea *ngSwitchCase="'textarea'"
+                 [formElement]='formElement'>
+  </briq-textarea>
+</ng-container>
+
+<div *ngIf='formElement.isInvalid()' class='error'>
+  <ng-container *ngFor='let error of formElement.getErrors()'>
+    <briq-error *ngIf="error === 'required'">Veld is verplicht</briq-error>
+    <briq-error *ngIf="error === 'email'">Vul een geldig email adres in</briq-error>
+    <briq-error *ngIf="error === 'min'">Vul een hoger getal in</briq-error>
+    <briq-error *ngIf="error === 'max'">Vul een lager getal in</briq-error>
+  </ng-container>
+</div>

@@ -1,0 +1,65 @@
+<div (clickOutside)='this.close()'
+     class='select-wrapper'>
+  <div [attr.data-multiple]='formElement.multiple'
+       [ngClass]='{ open: openMenu }'
+       class='select'>
+    <div [attr.data-cy]='formElement.id'
+         [class.error]='formElement.isInvalid()'
+         [class.valid]='formElement.formControl.valid'
+         (click)='collapseMenu()'
+         class='current'>
+      <p class='current-txt'>
+        <ng-container *ngIf='formElement?.value'>
+          {{ selectedValueDisplay }}
+        </ng-container>
+
+        <ng-container *ngIf='!formElement.formControl.valid'>
+          Selecteer een keuze
+        </ng-container>
+      </p>
+
+      <briq-icon class='toggle-icon'
+                 icon='chevron_s'>
+      </briq-icon>
+    </div>
+
+    <div [class.multiple]='formElement.multiple'
+         class='menu'>
+      <briq-searchbar *ngIf='formElement.searchable'
+                      [attr.data-cy]='formElement.id + "-search"'
+                      [placeholder]='formElement.searchPlaceholder'
+                      (search)='search($event.data)'
+                      class='searchbar'>
+      </briq-searchbar>
+
+      <div *ngIf='options.length'
+           class='options'>
+        <div *ngFor='let option of options'
+             [attr.data-cy]='formElement.id + "-item"'
+             [ngClass]='{
+                        active: formElement.optionIsChecked(option),
+                        hidden: option.searchMatch === false,
+                        disabled: option.disabled
+                     }'
+             (click)='setValue(option)'
+             class='option-item'>
+          <briq-basic-checkbox *ngIf='formElement.multiple'
+                               [limit]='isLimit(formElement.limitAmount)'
+                               [value]='isMultiSelected(option)'
+                               (checked)='setValue(option)'
+                               class='checkbox'>
+          </briq-basic-checkbox>
+
+          {{ option.label ? option.label.charAt(0).toUpperCase() + option.label.substr(1) : '' }}
+        </div>
+      </div>
+
+      <div *ngIf='options.length === 0'
+           class='no-options-available'>
+        <p class='text'>
+          {{ formElement.noOptionsText }}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,7 @@
+<a [attr.data-cy]="'menu_item_' + item.url"
+   [id]="'menu_item_' + item.id.toString()"
+   class='menu-item {{ activeState }}'
+   href='{{ item.url }}'>
+  <briq-icon [icon]='item.icon'></briq-icon>
+  {{ item.label }}
+</a>

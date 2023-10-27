@@ -1,0 +1,100 @@
+@import 'vars';
+
+$button_primary_bg_color: var(--briq-button-primary-bg-color, $color-primary-dark);
+$button_primary_color: var(--briq-button-primary-color, $color-white);
+
+$button_secondary_bg_color: var(--briq-button-secondary-bg-color, $color-secondary);
+$button_secondary_color: var(--briq-button-secondary-color, $color-white);
+
+$button_cancel_bg_color: var(--briq-button-cancel-bg-color, $color-white);
+$button_cancel_border_color: var(--briq-button-secondary-bg-color, $color-neutral-600);
+$button_cancel_color: var(--briq-button-cancel-button, $color-tertiary);
+
+$button_disabled_bg_color: var(--briq-button-disabled-bg-color, $color-neutral-800);
+$button_disabled_color: var(--briq-button-disabled-color, $color-neutral-400);
+
+.button {
+  background: $button_primary_bg_color;
+  border: 1px solid $button_primary_bg_color;
+  padding: 0 $spacing-36;
+  border-radius: $border-radius-big;
+  cursor: pointer;
+  height: 46px;
+  font-weight: bold;
+  transition: opacity $speed $cubic-bezir;
+  display: flex;
+  flex-wrap: nowrap;
+  @include font($font-size-small, $font-weight-bold, 24px, $button_primary_color);
+  align-items: center;
+
+  &.secondary {
+    background: $button_secondary_bg_color;
+    border-color: $button_secondary_bg_color;
+    color: $button_secondary_color;
+  }
+
+  &.cancel {
+    background: $button_cancel_bg_color;
+    border-color: $button_cancel_border_color;
+    color: $button_cancel_color;
+  }
+
+  &.disabled {
+    border-color: $button_disabled_bg_color;
+    background: $button_disabled_bg_color;
+    color: $button_disabled_color;
+    font-weight: normal;
+    cursor: default;
+  }
+
+  &.warning {
+    border-color: $color-error;
+    background: $color-error;
+    color: $color-white;
+  }
+
+  &.grey {
+    font: inherit;
+    border-color: $color-neutral-400;;
+    background: $color-neutral-400;;
+    color: $color-tertiary-600;
+  }
+
+  &.white {
+    border-color: $color-neutral;
+    background: $color-neutral;
+    border-radius: 8px;
+    color: $color-tertiary-600;
+
+    &:hover,
+    &.active {
+      background: $color-primary-dark;
+      color: $color-neutral;
+    }
+  }
+
+  &.outline {
+    border-color: $color-tertiary;
+    background: $color-neutral;
+    color: $color-tertiary-600;
+    opacity: .8;
+    padding: 0 $spacing-20;
+
+    &:hover,
+    &.active {
+      background: $color-tertiary;
+      color: $color-neutral;
+      opacity: 1;
+    }
+  }
+
+  &.hidden {
+    cursor: default;
+    opacity: 0;
+  }
+
+  &.fullwidth {
+    width: 100%;
+    justify-content: center;
+  }
+}

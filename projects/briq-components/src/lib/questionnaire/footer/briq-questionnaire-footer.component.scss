@@ -1,0 +1,46 @@
+@import 'vars';
+
+footer {
+  background-color: $color-white;
+  padding: $spacing-36;
+  position: relative;
+
+  .button-row,
+  .question-count {
+    flex-basis: 50px;
+    flex-shrink: 0;
+    flex-grow: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .question-row,
+  .progress-count {
+    text-align: center;
+    color: #1d1d1d;
+  }
+
+  .progress-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    -webkit-appearance: none;
+    appearance: none;
+    display: flex;
+    width: 100%;
+    border-radius: 0;
+    border-color: $color-neutral-200;
+    background: $color-neutral-200;
+    margin: 0;
+
+    &::-webkit-progress-value {
+      background-color: $color-secondary;
+    }
+
+    &::-webkit-progress-bar {
+      background-color: #eee;
+      box-shadow: 0 2px 5px $color-neutral-200 inset;
+    }
+  }
+}

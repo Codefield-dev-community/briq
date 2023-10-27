@@ -1,0 +1,8 @@
+<textarea [attr.data-cy]='formElement.id'
+          [class.error]='formElement.isInvalid()'
+          [formControl]='formElement.formControl'
+          [placeholder]="formElement.placeholder || ''"
+          [required]='formElement.required'
+          class='input textarea'>
+</textarea>
+<span *ngIf='!formElement.label && formElement.required' class='asterisk'>*</span>

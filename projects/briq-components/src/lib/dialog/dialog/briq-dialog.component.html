@@ -1,0 +1,9 @@
+<div class="dialog-background">
+  <div [ngClass]="size" class="dialog-box">
+    <briq-icon (click)="close()" icon="close" class="close"> </briq-icon>
+
+    <h3 class="title">{{ title }}</h3>
+
+    <ng-content></ng-content>
+  </div>
+</div>
